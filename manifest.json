@@ -1,0 +1,33 @@
+{
+    "short_name": "Random Table",
+    "name": "Random Table",
+    "description": "Generates a random table and asks for max value",
+    "maintainer": {
+      "name": "Example",
+      "email": "example-email@coursera.org"
+    },
+    "version": "0.0.1",
+    "sandbox": "allow-presentation allow-scripts allow-same-origin",
+    "configurationExamples": [
+      {
+        "name": "Space Shuttle",
+        "configuration": {
+          "videoId": "OnoNITE-CLc",
+          "start": 93
+        },
+        "graderConfiguration" : {
+            "submission" : "solution"
+        }
+      }      
+    ],
+    "authorizations": {},
+    "actionTypes": ["GET_SESSION_CONFIGURATION", "SET_HEIGHT"],
+    "macros": [],
+    "accessibility": {
+      "mobileCompatibility": {
+        "supportsTouch": true,
+        "minHeightPx": 0,
+        "minWidthPx": 0
+      }
+    }
+  }

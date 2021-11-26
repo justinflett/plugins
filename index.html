@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://www.coursera.org/widget/coursera-connect.css">
         <script src="https://www.coursera.org/widget/coursera-widget-connect-v0.js"></script>
+        <script src="grader.js"></script>
         <style>
             table {
                 font-family: arial, sans-serif;
@@ -15,29 +17,25 @@
         </style>
     </head>
     <body>
-        <h1>Quiz: P-value Calculation</h1>
-        <div id="target-id"></div>
+        <h1>Quiz: Max value Calculation</h1>
+        <p>Please consider the randomized data below:</p>
+        <div id="table-id"></div>
         <div id="max-solution"></div>
 
         <label for="max_num">Please enter max number in the table:</label>
         <input type="text" id="max_num" name="max_num"><br><br>
+        <button onclick="grade()">Submit</button>
+        <div id="give-feedback"></div>
 
     </body>
     <script>
-        var data = [
-            [0.1,0.2,0.3],
-            [0.4,0.5,0.6],
-            [0.7,0.8,0.9],
-            [0.05,0.125,0.575],
-            [0.89,0.96,0.74]
-        ];
-
         var dataArray = [];  
         var nums = [];      
         var buildTable = "<table>";
+        var feedback = "";
 
-        // Build a 2x4 table
-        for(var i=0; i<10; i++) {
+        // Build a 2x10 table
+        for(var i=0; i<3; i++) {
             dataArray[i] = [];
             buildTable += "<tr>";
                 for(var j=0; j<2; j++){
@@ -46,16 +44,23 @@
                     nums.push(randomData);
                     buildTable += "<td>"+randomData+"</td>";
                 }
-        }  
-        
+        }         
         buildTable += "</table>";        
-        document.getElementById('target-id').innerHTML = buildTable;
+        document.getElementById('table-id').innerHTML = buildTable;
 
-        // Find max value in random dataset
-        var solution = Math.max(...nums);
-
-        // Obtain student answer
-
+        // Compare learner submission to solution
+        function grade() {
+            // Find max value in random dataset
+            var solution = Math.max(...nums);
+            // Obtain student answer
+            var submission = document.getElementById('max_num').value
+            if (Math.abs(submission - solution) < 0.1) {
+                feedback = "That is correct, great job!"
+            } else {
+                feedback = "Not quite, please try again!"
+            }
+            document.getElementById('give-feedback').innerHTML = feedback;
+        }
 
     </script>
 </html>
